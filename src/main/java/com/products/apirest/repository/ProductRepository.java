@@ -4,8 +4,14 @@ import com.products.apirest.model.ProductsModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductsModel, UUID> {
+    Optional<ProductsModel> findById(UUID id);
+
+    void deleteById(UUID id);
+
+
 }
