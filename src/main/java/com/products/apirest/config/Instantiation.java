@@ -8,10 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import java.util.Arrays;
 
 @Configuration
-public class instantiation implements CommandLineRunner {
+public class Instantiation implements CommandLineRunner {
     final ProductRepository repository;
 
-    public instantiation(ProductRepository repository) {
+    public Instantiation(ProductRepository repository) {
         this.repository = repository;
     }
 
