@@ -1,6 +1,5 @@
 package com.products.apirest.config;
 
-import jakarta.persistence.Entity;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.RequestHandler;
@@ -14,13 +13,14 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.ArrayList;
 
+
 import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
-@EnableSwagger2
-
 public class SwaggerConfig {
 
+    //access documentation
+    //http://localhost:8080/swagger-ui/index.html
     @Bean
     public Docket productApi(){
         return new Docket(DocumentationType.SWAGGER_2).select()

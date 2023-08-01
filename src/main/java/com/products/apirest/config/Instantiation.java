@@ -2,6 +2,7 @@ package com.products.apirest.config;
 
 import com.products.apirest.model.ProductsModel;
 import com.products.apirest.repository.ProductRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,11 +10,8 @@ import java.util.Arrays;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
-    final ProductRepository repository;
-
-    public Instantiation(ProductRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired
+    private ProductRepository repository;
 
     @Override
     public void run(String... args) throws Exception {

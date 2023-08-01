@@ -1,13 +1,13 @@
 package com.products.apirest.model;
 
-import jakarta.persistence.*;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tb-product")
+@Table(name = "tbproduct")
 public class ProductsModel implements Serializable {
     private static final long serialVersionUID = 1L;
 
