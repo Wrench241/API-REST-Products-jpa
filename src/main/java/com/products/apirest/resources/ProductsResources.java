@@ -1,55 +1,52 @@
-package com.products.apirest.controller;
+package com.products.apirest.resources;
 
 import com.products.apirest.model.ProductsModel;
-import com.products.apirest.repository.ProductRepository;
+import com.products.apirest.services.ProductServices;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/")
-@Api(value = "API REST Products")
-public class ProductsController {
+@RequestMapping("/airlonTest")
+@Api(value = "testAir")
+public class ProductsResources {
 
     @Autowired
-    private ProductRepository repository;
+    private ProductServices services;
+
+    @GetMapping("/Search")
+    @ApiOperation(value="search name")
+    public List<ProductsModel> search(@RequestParam String marca){
+        return services.search(marca);
+    }
 
     @GetMapping("/Products")
     @ApiOperation(value="return all products")
     public List<ProductsModel> listProducts(){
-        return repository.findAll();
-    }
-
-    @GetMapping(value = "/Products/{id}")
-    @ApiOperation(value="search and return a id")
-    public Optional<ProductsModel> SearchId(@PathVariable(value ="id") UUID id){
-        return repository.findById(id);
+        return services.findAll();
     }
 
     @PostMapping(value = "/Products")
     @ApiOperation(value="add a product")
     public ProductsModel Insert(@RequestBody ProductsModel productsModel){
-        return repository.save(productsModel);
+        return services.save(productsModel);
 
     }
-
     @DeleteMapping(value = "/Products")
     @ApiOperation(value="delete a product")
-    public void delete(@RequestBody ProductsModel productsModel){
-        repository.delete(productsModel);
+    public void delete(String marca){
+        services.delete(marca);
     }
 
     @PutMapping("/Products")
     @ApiOperation(value="update a product")
     public ProductsModel update(@RequestBody ProductsModel productsModel){
-        return repository.save(productsModel);
+        return services.save(productsModel);
     }
 
 

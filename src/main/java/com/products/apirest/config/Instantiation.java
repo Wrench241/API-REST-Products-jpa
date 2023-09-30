@@ -17,10 +17,11 @@ public class Instantiation implements CommandLineRunner {
     public void run(String... args) throws Exception {
         repository.deleteAll();
 
-        ProductsModel p1 = new ProductsModel(null, "notebook","samsung");
-        ProductsModel p2 = new ProductsModel(null, "notebook","dell");
+        // ProductsModel p1 = new ProductsModel(null, "apple","celular",343.4);
+        // ProductsModel p2 = new ProductsModel(null, "samsung","notebook",21.23);
+        //ProductsModel p3 = new ProductsModel(null,"nokia","celular",323.23);
 
-        repository.saveAll(Arrays.asList(p1,p2));
+//        repository.saveAll(Arrays.asList(p1,p2,p3));
 
 
     }

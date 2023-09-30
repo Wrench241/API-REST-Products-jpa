@@ -1,5 +1,6 @@
 package com.products.apirest.model;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.*;
@@ -14,40 +15,43 @@ public class ProductsModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    private String products;
-    private String nameProducts;
+    private String marca;
+    private String categoria;
+    private Double preco;
 
-    public ProductsModel(){
+    public ProductsModel() {
 
     }
 
-    public ProductsModel(UUID id, String products, String nameProducts) {
+    public ProductsModel(UUID id, String marca, String categoria, Double preco) {
         this.id = id;
-        this.products = products;
-        this.nameProducts = nameProducts;
+        this.marca = marca;
+        this.categoria = categoria;
+        this.preco = preco;
+
     }
 
-    public UUID getId() {
-        return id;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public String getProducts() {
-        return products;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setProducts(String products) {
-        this.products = products;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public String getNameProducts() {
-        return nameProducts;
+    public Double getPreco() {
+        return preco;
     }
 
-    public void setNameProducts(String nameProducts) {
-        this.nameProducts = nameProducts;
+    public void setPreco(Double preco) {
+        this.preco = preco;
     }
 }
