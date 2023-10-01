@@ -6,6 +6,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -24,6 +26,26 @@ public class ProductsResources {
     public List<ProductsModel> search(@RequestParam String marca){
         return services.findByMarca(marca);
     }
+    @PostMapping("/Status/{id}")
+    public ResponseEntity<String> status(@PathVariable UUID id, @RequestBody ProductsModel productUpdate){
+        ProductsModel productExist = services.findById(id).orElse(null);
+
+        if(productExist == null){
+            return new ResponseEntity<>("Produto não encontrado", HttpStatus.NOT_FOUND);
+        }
+
+        if(productUpdate.getStatus() != null){
+            productExist.setStatus(productUpdate.getStatus());
+        }
+
+        services.saveStatus(productExist);
+        return new ResponseEntity<>("Status do produto atualizado.", HttpStatus.OK);
+    }
+    @GetMapping("/Products/{id}")
+    public Optional<ProductsModel> findById(@PathVariable(value="id") UUID id){
+        return services.findById(id);
+    }
+
     @GetMapping("/searchCategoria")
     public List<ProductsModel> searchCategoria(@RequestParam String categoria){
         return services.findByCategoria(categoria);
@@ -31,8 +53,8 @@ public class ProductsResources {
 
     @GetMapping("/Products")
     @ApiOperation(value="return all products")
-    public List<ProductsModel> listProducts(){
-        return services.findAll();
+    public List<ProductsModel> listProducts(String status){
+        return services.findAll(status);
     }
 
     @PostMapping(value = "/Products")
