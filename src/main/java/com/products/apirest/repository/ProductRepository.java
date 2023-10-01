@@ -8,17 +8,14 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Repository
 public interface ProductRepository extends JpaRepository<ProductsModel, UUID> {
-    Optional<ProductsModel> findById(UUID id);
 
-    void deleteById(UUID id);
-    @Modifying
-    @Query("DELETE FROM ProductsModel p WHERE p.marca = :marca")
-    List<ProductsModel> search(@Param("marca") String marca);
+    List<ProductsModel> findByMarca(String marca);
+
+    List<ProductsModel> findByCategoria(String categoria);
 
     void deleteByMarca(String marca);
 

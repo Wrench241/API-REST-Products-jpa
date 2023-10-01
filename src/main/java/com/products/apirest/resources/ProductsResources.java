@@ -19,10 +19,14 @@ public class ProductsResources {
     @Autowired
     private ProductServices services;
 
-    @GetMapping("/Search")
+    @GetMapping("/searchMarca")
     @ApiOperation(value="search name")
     public List<ProductsModel> search(@RequestParam String marca){
-        return services.search(marca);
+        return services.findByMarca(marca);
+    }
+    @GetMapping("/searchCategoria")
+    public List<ProductsModel> searchCategoria(@RequestParam String categoria){
+        return services.findByCategoria(categoria);
     }
 
     @GetMapping("/Products")

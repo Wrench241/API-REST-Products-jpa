@@ -15,11 +15,14 @@ public class ProductServices {
     @Autowired
     private ProductRepository repo;
 
-    public List<ProductsModel> search(String marca) {
-        return repo.search(marca);
+    public List<ProductsModel> findByMarca(String marca) {
+        return repo.findByMarca(marca);
     }
     public List<ProductsModel> findAll(){
         return repo.findAll();
+    }
+    public List<ProductsModel> findByCategoria(String categoria){
+        return repo.findByCategoria(categoria);
     }
     public Optional<ProductsModel> findById(UUID id){
        return repo.findById(id);
