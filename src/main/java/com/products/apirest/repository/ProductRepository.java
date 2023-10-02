@@ -19,5 +19,7 @@ public interface ProductRepository extends JpaRepository<ProductsModel, UUID> {
 
     List<ProductsModel> findByStatus(String status);
 
+    void deleteById(UUID id);
+
 
 }

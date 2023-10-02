@@ -70,5 +70,9 @@ public class ProductsResources {
         return services.save(productsModel);
     }
 
+    @DeleteMapping("/Products/{id}")
+    public void delete(@PathVariable(value = "id") UUID id){
+        services.delete(id);
+    }
 
 }

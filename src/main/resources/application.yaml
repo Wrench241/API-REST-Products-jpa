@@ -1,4 +1,16 @@
 spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+    exchange:
+      name: TestExchanges
+    queue:
+      name: filaTest
+    binding:
+      routing-key: fila.product
   datasource:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
@@ -9,4 +21,21 @@ spring:
     show-sql: true
   hibernate:
     dialect: org.hibernate.dialect.PostgreSQLDialect
+  swagger:
+    openapi: 3.0.1
+    info:
+      title: AirlonTest
+      description: Api master
+      version: 1.0.0
+    servers:
+      - url: http://localhost:8080
+    paths:
+      /airlonTest:
+        get:
+          summary: teste
+          description: Endpoint teste
+          responses:
+            '200':
+              description: Sucesso
+
 
