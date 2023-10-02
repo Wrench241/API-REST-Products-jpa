@@ -53,8 +53,8 @@ public class ProductsResources {
 
     @GetMapping("/Products")
     @ApiOperation(value="return all products")
-    public List<ProductsModel> listProducts(String status){
-        return services.findAll(status);
+    public List<ProductsModel> listProducts(){
+        return services.findAll();
     }
 
     @PostMapping(value = "/Products")
@@ -62,11 +62,6 @@ public class ProductsResources {
     public ProductsModel Insert(@RequestBody ProductsModel productsModel){
         return services.save(productsModel);
 
-    }
-    @DeleteMapping(value = "/Products")
-    @ApiOperation(value="delete a product")
-    public void delete(String marca){
-        services.delete(marca);
     }
 
     @PutMapping("/Products")

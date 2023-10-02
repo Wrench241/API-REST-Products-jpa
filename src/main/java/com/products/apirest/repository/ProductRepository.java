@@ -11,12 +11,11 @@ import java.util.UUID;
 @Repository
 public interface ProductRepository extends JpaRepository<ProductsModel, UUID> {
 
-    List<ProductsModel> findByMarca(String marca);
+    List<ProductsModel> findByMarcaAndStatus(String marca, String status);
     Optional<ProductsModel> findById(UUID id);
 
-    List<ProductsModel> findByCategoria(String categoria);
+    List<ProductsModel> findByCategoriaAndStatus(String categoria, String status);
 
-    void deleteByMarca(String marca);
 
     List<ProductsModel> findByStatus(String status);
 
